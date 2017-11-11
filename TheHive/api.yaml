@@ -1,0 +1,41 @@
+walkoff: '0.1'
+info:
+  version: 1.0.0
+  title: TheHive
+  description: App to receive webhooks from TheHive and create TheHive Cases
+  contact:
+    name: Bill Murrin
+  license:
+    name: Creative Commons
+actions:
+  Web Hook:
+    run: app.TheHive.web_hook_handler
+    event: TheHiveWebHook
+    description: Web Hook listener for TheHive
+    returns:
+      Success:
+        schema:
+          type: object
+  Get TLP:
+    run: app.TheHive.obtain_tlp
+    description: Get the Event TLP
+    parameters:
+        - name: data
+          description: The data to echo
+          required: true
+          schema:
+            type: object
+devices:
+  TheHive:
+    description: TheHive Server Connection
+    fields:
+      - name: apikey
+        type: string
+        description: Api Key for TheHive Connection
+        placeholder: TheHive API Key
+        required: true
+      - name: server_uri
+        description: URI to TheHive
+        type: string
+        placeholder: Server URI
+        required: true

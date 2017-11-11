@@ -1,0 +1,3 @@
+git+https://github.com/billmurrin/TheHive4py@dev
+requests
+pytest
